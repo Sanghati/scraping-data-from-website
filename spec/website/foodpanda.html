@@ -1,0 +1,4210 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]-->
+<head><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XQUBUFZAAQMHV1NT"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,n,i,s){return u?u-=1:r("err",[s||new UncaughtException(t,e,n)]),"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t(5),a=window.onerror,s=!1,u=0;t("loader").features.push("err"),window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(d){"stack"in d&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),s=!0)}i.on("fn-start",function(){s&&(u+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&u>0&&(u-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);try{i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1)}catch(r){try{i.emit("internal-error",r)}catch(s){}}return n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(d);if(f&&(r.rxSize=f),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",e)}catch(r){}}};for(var f=0;u>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&u&&u.body){p.proto="https"===c.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=p.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",f="attachEvent",c=(""+location).split("?")[0],p=e.exports={offset:i(),origin:c,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,r,s){function nrWrapper(){try{var n,a=u(arguments),d=this,f=r&&r(a,d)||{}}catch(c){i([c,"",[a,d,s],f])}o(e+"start",[a,d,s],f);try{return n=t.apply(d,a)}catch(p){throw o(e+"err",[a,d,p],f),p}finally{o(e+"end",[a,d,n],f)}}return a(t)?t:(e||(e=""),nrWrapper[n.flag]=!0,nrWrapper)}function r(t,e,r,o){r||(r="");var i,s,u,d="-"===r.charAt(0);for(u=0;u<e.length;u++)s=e[u],i=t[s],a(i)||(t[s]=n(i,d?s+r:r,o,s,t))}function o(t,e,n){try{s.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{s.emit("internal-error",t)}catch(e){}}function a(t){return!(t&&"function"==typeof t&&t.apply&&!t[n.flag])}var s=t(1),u=t(2);e.exports=n,n.inPlace=r,n.flag="nr@wrapper"},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
+    <title>Khaaja Chowk in Bangalore, 3rd Stage (Indiranagar) | Biryani with free delivery | foodpanda.in</title><meta name="keywords" content="Khaaja Chowk, Khaaja Chowk - Bangalore, 3rd Stage (Indiranagar) Bangalore , Khaaja Chowk - order food online, order Biryani online, foodpanda, order food online, Get Menu, Cash On delivery, Online Payment, Contact, Location, Reviews, contact number, phone number, foodpanda" />
+<meta name="description" content="Order your favorite Biryani online from Khaaja Chowk, Bangalore, 3rd Stage (Indiranagar) with free home delivery ● Easy cash on delivery or online payment." />
+<meta name="robots" content="index,follow" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="revisit-after" content="3 days" />
+<meta name="apple-itunes-app" content="app-id=758103884, app-argument=/AdXadvert?adID=web2529725fb567a4" />
+<meta name="google-play-app" content="app-id=com.global.foodpanda.android, app-argument=/AdXadvert?adID=web2529725fb4fb55" />
+<meta property="og:url" content="http://www.foodpanda.in/restaurant/n4be/khaaja-chowk-indranagar" />
+<meta property="og:site_name" content="Foodpanda" />
+<link rel="icon" type="image/x-icon" href="http://assets.foodpanda.in/layout/themes/margherita/images/en/favicon.ico?v=20140321160637" />
+<link sizes="144x144" rel="apple-touch-icon-precomposed" href="http://static.foodpanda.in/themes/margherita/images/apple_touch_icon_144x144_precomposed.png" />
+<link sizes="114x114" rel="apple-touch-icon-precomposed" href="http://static.foodpanda.in/themes/margherita/images/apple_touch_icon_114x114_precomposed.png" />
+<link sizes="72x72" rel="apple-touch-icon-precomposed" href="http://static.foodpanda.in/themes/margherita/images/apple_touch_icon_72x72_precomposed.png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.foodpanda.in/themes/margherita/images/apple_touch_icon_57x57_precomposed.png" />
+<link rel="apple-touch-icon" href="http://static.foodpanda.in/themes/margherita/images/apple_touch_icon_57x57_precomposed.png" />
+<link rel="stylesheet" type="text/css" href="http://static.foodpanda.in/themes/margherita/css/main.min.css?fee35b002ee6d2cc301a03b97285c6cb" />
+<script type="text/javascript" src="http://static.foodpanda.in/themes/margherita/js/head.js?139180c3434574af3eae8736acd4fa6f"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+                window.lazyLoadFunctions = [];
+                window.logJsErrors = true;
+            
+loadSiteJs(["http:\/\/static.foodpanda.in\/themes\/margherita\/js\/main.js?139180c3434574af3eae8736acd4fa6f"]);
+/*]]>*/
+</script>
+
+    <script type="text/javascript">
+(function() {
+  var projectId = 566322169;
+  var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
+  var scriptTag = document.createElement('script');
+  scriptTag.type = 'text/javascript';
+  scriptTag.async = true;
+  scriptTag.src = protocol + 'cdn.optimizely.com/js/' + projectId + '.js';
+  var head = document.getElementsByTagName('head')[0];
+  head.parentNode.insertBefore(scriptTag, head);
+})();
+function optimizelyTimeout() {
+  window.optimizely = window.optimizely || [];
+  if(!window.optimizely.data) {
+    window.optimizely.push("timeout");
+  }
+}
+setTimeout(optimizelyTimeout, 1000);
+var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-31290576-1']);
+   _gaq.push(['_setDomainName', 'foodpanda.in']);
+   _gaq.push(['_setCustomVar',2,'Coordinates','11_132912',2]);
+   _gaq.push(['_setCustomVar',8,'AB Group','b',2]);
+   _gaq.push(['_trackEvent', 'Area', 'Get Area', '11_132912', 1, true]);
+   _gaq.push(['_trackPageview']);
+
+   (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+/*\
+|*|  :: cookies.js ::
+|*|  A complete cookies reader/writer framework with full unicode support.
+|*|  https://developer.mozilla.org/en-US/docs/DOM/document.cookie
+\*/
+var docCookies={getItem:function(sKey){return unescape(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+escape(sKey).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null},setItem:function(sKey,sValue,vEnd,sPath,sDomain,bSecure){if(!sKey||/^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)){return false}var sExpires="";if(vEnd){switch(vEnd.constructor){case Number:sExpires=vEnd===Infinity?"; expires=Fri, 31 Dec 9999 23:59:59 GMT":"; max-age="+vEnd;break;case String:sExpires="; expires="+vEnd;break;case Date:sExpires="; expires="+vEnd.toGMTString();break}}document.cookie=escape(sKey)+"="+escape(sValue)+sExpires+(sDomain?"; domain="+sDomain:"")+(sPath?"; path="+sPath:"")+(bSecure?"; secure":"");return true},removeItem:function(sKey,sPath){if(!sKey||!this.hasItem(sKey)){return false}document.cookie=escape(sKey)+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT"+(sPath?"; path="+sPath:"");return true},hasItem:function(sKey){return(new RegExp("(?:^|;\\s*)"+escape(sKey).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=")).test(document.cookie)},keys:function(){var aKeys=document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g,"").split(/\s*(?:\=[^;]*)?;\s*/);for(var nIdx=0;nIdx<aKeys.length;nIdx++){aKeys[nIdx]=unescape(aKeys[nIdx])}return aKeys}};
+
+// The following lines will set up a timer to track order conversion, utilising session cookie.
+var trackingFunction = function () {
+ $(document).ready(function() {
+    if (!docCookies.hasItem('orderInit')) {
+        var t1 = $.now();
+        docCookies.setItem('orderInit', t1);
+    }
+ });
+}
+if (typeof lazyLoadFunctions === 'undefined') {
+ trackingFunction();
+} else {
+ lazyLoadFunctions.push(trackingFunction);
+}
+
+</script><script type="text/javascript">
+var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement("script");
+      gads.async = true;
+      gads.type = "text/javascript";
+      var useSSL = "https:" == document.location.protocol;
+      gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+      var node =document.getElementsByTagName("script")[0];
+      node.parentNode.insertBefore(gads, node);
+     })();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/57835327/tile1', [319, 160], 'div-gpt-ad-1390554524263-0').addService(googletag.pubads());
+googletag.defineSlot('/57835327/tile2', [319, 160], 'div-gpt-ad-1390554693819-0').addService(googletag.pubads());
+googletag.defineSlot('/57835327/tile3', [319, 160], 'div-gpt-ad-1390555015755-0').addService(googletag.pubads());
+googletag.defineSlot('/57835327/tile4', [319, 160], 'div-gpt-ad-1390555078720-0').addService(googletag.pubads());
+googletag.defineSlot('/57835327/tile5', [319, 160], 'div-gpt-ad-1390555182195-0').addService(googletag.pubads());
+googletag.defineSlot('/57835327/tile6', [319, 160], 'div-gpt-ad-1390555083687-0').addService(googletag.pubads());
+googletag.defineSlot('/57835327/strip_banner', [1100, 110], 'div-gpt-ad-1396715464789-0').addService(googletag.pubads());
+
+googletag.enableServices();
+});
+
+</script></head>
+<body class="menu menu-index IN IN_en ">
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K2HK7K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>
+        dataLayer = [{"lat":"NA","lng":"NA","city_name":"Bangalore","city_id":11,"area_name":"100 Feet Road (Indiranagar)","area_id":"132912","landing_page":"%2Frestaurants%2Findex%2F
+%2Fnorth-indian","customer_logged":"0","customer_code":"NA","customer_status":"NA","lang":"IN_en","visitor_id":"oka17qph51ajb8b70ai3sob4a7","language":"IN_en","platform":"pc","country_id":"IN","conversion_duration":121723,"ab_group":"b","vendor_title":"Khaaja Chowk","vendor_code":"n4be","vendor_url":"http:\/\/www.foodpanda.in\/restaurant\/n4be\/khaaja-chowk-indranagar","vendor_image":"http:\/\/dynamic.foodpanda.in\/images\/vendors\/n4be_th.gif","vendor_cuisines":"Biryani,North Indian","brand":"Foodpanda","currency":"Rs."}];
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K2HK7K');
+    </script>
+    
+    
+    <div id="toTop"></div>
+    <div class="sticky-footer-page-wrapper">
+        <header class="gradient-red">
+    <div id="header" class="container">
+                    <a href="/" id="top-logo">
+                                <img src="http://assets.foodpanda.in/layout/themes/margherita/images/en/top_logo.png?v=20140321160637" alt="Logo" />            </a>
+        
+        <ul id="header-links" class="list-unstyled list-inline clearfix">
+            <li id="hotline">
+                <a href="/contents/contact.htm">
+                    <i class="icon-hotline img"></i>
+                    <span class="teaser">Questions? Call us Toll-free!</span>
+                    <span class="number">1800-3000-3034 (11AM to 11PM)</span>
+                </a>
+            </li>
+                            <li id="account-btn" class="btn-group invisible">
+                                            <a id="auth-modal-button" class="btn btn-default" data-toggle="modal" data-target="#auth-modal">
+                            <span class="btn-account img"></span>
+                            <span class="label">Log in / Register</span>
+                        </a>
+                                    </li>
+                    </ul>
+    </div>
+</header>
+    <div id="breadcrumbs" class="breadcrumb">
+        <div class="container">
+            <ul class="list-unstyled list-inline">
+                    
+    
+    <li>
+                    <a href="/" >Home</a>
+            </li>
+    
+            <li><i class="divider img"></i></li>
+    
+    <li>
+                    <a href="/restaurants/index" class="area-selection-modal-link" >Bangalore</a>
+            </li>
+    
+            <li><i class="divider img"></i></li>
+    
+    <li>
+                    <a href="/restaurants/index" class="area-selection-modal-link" >100 Feet Road (Indiranagar)</a>
+            </li>
+    
+            <li><i class="divider img"></i></li>
+    
+    <li>
+                    <a href="/restaurants/index" >Popular restaurants</a>
+            </li>
+    
+            <li><i class="divider img"></i></li>
+    
+    <li>
+        Khaaja Chowk    </li>
+            </ul>
+
+            <div class="service-links">
+                <ul class="list-unstyled list-inline">
+                                            <li>
+                            <i class="icon-livechat img"></i>
+                            <a class="liveChatSwitch" href="#">Live chat</a>
+                        </li>
+                                                                <li>
+                            <i class="icon-help img"></i>
+                            <a href="/contents/Frequently Asked Questions">Help</a>
+                        </li>
+                                    </ul>
+
+                            </div>
+        </div>
+    </div>
+
+        <div id="content-wrapper">
+            <div id="content" class="container">
+                
+<div class="row">
+    <div class="col-sm-12 col-md-9">
+        <div id="menu" class="restaurant-content-wrapper clearfix" itemscope itemtype="http://schema.org/Restaurant">
+            <div id="restaurant">
+                <div class="restaurant-header gradient-gray clearfix">
+                    <div class="restaurant-title">
+                        <h1>Order from Khaaja Chowk</h1>
+                        <span itemprop="name" class="text-hide">Khaaja Chowk</span>
+                        <span class="restaurant-title-address">
+                            Bangalore, 3rd Stage (Indiranagar), 276, Inner Ring Rd, Indira Nagar III Stage, Stage 3, Indira Nagar, Bangalore                        </span>
+                    </div>
+                                    </div>
+
+                <div class="restaurant-content clearfix">
+                    <img src="http://dynamic.foodpanda.in/images/vendors/n4be_th.gif"
+                         class="restaurant-list-logo"
+                         alt=""
+                         title="Khaaja Chowk"
+                         itemprop="image">
+                    
+<div class="restaurant-list-description">
+    <div class="cuisines"><a href="/restaurants/index/city/bangalore/cuisines/biryani-cuisine">Biryani</a>, <a href="/restaurants/index/city/bangalore/cuisines/north-indian">North Indian</a></div>
+            <div class="restaurant-list-table">
+            <div class="restaurant-list-col-icon">
+                <span class="cart-footer-info-icon"></span>
+            </div>
+            <div class="restaurant-list-col-desc">
+                <strong>Delivery in: </strong>
+                50min            </div>
+        </div>
+        <div class="restaurant-list-table">
+        <div class="restaurant-list-col-icon">
+            <span class="icon-deliveryfee img"></span>
+        </div>
+        <div class="restaurant-list-col-desc">
+            
+                            <div id="restaurant-menu-delivery-fee">
+                    <div class="with-value" style="display:none">
+                        <strong>Delivery fee:</strong>
+                        <span id="restaurant-menu-delivery-fee">Rs.0.00</span>
+                    </div>
+
+                    <div class="free">
+                        <strong>Free delivery</strong>
+                    </div>
+                </div>
+                    </div>
+    </div>
+
+    <div class="restaurant-list-table last">
+        <div class="restaurant-list-col-icon">
+            <span class="icon-deliverymin img"></span>
+        </div>
+        <div class="restaurant-list-col-desc">
+            <strong>Delivery min.:</strong>
+            Rs.500.00        </div>
+    </div>
+        </div>
+                </div>
+            </div>
+
+            <div id="nav-tabs-wrapper">
+                <ul class="nav nav-tabs row ">
+                    <li class="content-nav-tabs content-nav-tab-menu active">
+                        <a href="#restaurant-menu" data-toggle="tab">Menu</a>
+                    </li>
+
+                                            <li class="content-nav-tabs content-nav-tab-review ">
+                            <a href="#restaurant-reviews" data-toggle="tab">Reviews</a>
+                        </li>
+                    
+                    <li class="content-nav-tabs content-nav-tab-info ">
+                        <a href="#restaurant-info" data-toggle="tab">Info</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="restaurant-content" class="tab-content">
+                <div id="restaurant-info" class="tab-pane clearfix ">
+    <div class="row">
+        <div class="restaurant-info-overview">
+            <div class="h2">Overview</div>
+            <hr />
+            <div class="restaurant-info-block clearfix">
+                <span class="icon-location img"></span>
+                <div class="restaurant-info-content">
+                    <strong>Address</strong><br />
+                    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">276, Inner Ring Rd, Indira Nagar III Stage, Stage 3, Indira Nagar, Bangalore, Bangalore, 3rd Stage (Indiranagar)</span>
+                </div>
+            </div>
+
+            <div class="restaurant-info-block clearfix">
+                <span class="icon-cuisines img"></span>
+                <div class="restaurant-info-content">
+                    <strong>Cuisines</strong><br />
+                    <span itemprop="servesCuisine">Biryani</span>, <span itemprop="servesCuisine">North Indian</span>                </div>
+            </div>
+
+            <div class="restaurant-info-block clearfix">
+                <span class="icon-deliveryfee img"></span>
+                <div class="restaurant-info-content">
+                    <strong>Delivery fee</strong><br />
+                    From Rs.0.00                </div>
+            </div>
+
+                            <div class="restaurant-info-block clearfix">
+                    <span class="icon-clock img"></span>
+                    <div class="restaurant-info-content">
+                        <strong>Pickup Time</strong><br />
+                        20 minutes                    </div>
+                </div>
+            
+            <div class="restaurant-info-block clearfix">
+                <span class="icon-time img"></span>
+                <div class="restaurant-info-content">
+                    <strong>Delivery time</strong><br />
+                    50 minutes                </div>
+            </div>
+
+            <div id="payment-types" class="restaurant-info-block clearfix">
+                <div class="h2">Payment types</div>
+                <hr>
+                <ul class="list-unstyled">
+                                            <li>
+                                                            <img alt="Pay online" src="http://dynamic.foodpanda.in/images/paymenttypes/4_th.jpg?v=20140508115225?r=1" />
+                                                        Pay online                        </li>
+                                            <li>
+                                                            <img alt="Cash On Delivery" src="http://dynamic.foodpanda.in/images/paymenttypes/1_th.png?v=20140507163724?r=1" />
+                                                        Cash On Delivery                        </li>
+                                            <li>
+                                                            <img alt="Pay online (with Citibank card)" src="http://dynamic.foodpanda.in/images/paymenttypes/5_th.jpg?v=20140507163729?r=1" />
+                                                        Pay online (with Citibank card)                        </li>
+                                    </ul>
+            </div>
+            <div id="food-characteristics">
+                            </div>
+        </div>
+        <div class="restaurant-info-deliveries">
+            <div class="row">
+                                    <div class="restaurant-info-delivery">
+                        <div class="h2">Delivery hours</div>
+                        <hr />
+                                <div class="no-delivery-today clearfix">
+            <div class="day">Monday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_1'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_1'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Tuesday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_2'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_2'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Wednesday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_3'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_3'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Thursday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_4'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_4'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+            <div class="delivery-today clearfix">
+            <div class="day">Friday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_5'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_5'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Saturday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_6'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_6'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Sunday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_7'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_7'></div>
+                    19:00 - 22:00                </div>
+                    </div>
+                        </div>
+                
+                                    <div class="restaurant-info-delivery">
+                        <div class="h2">Takeway hours</div>
+                        <hr />
+                                <div class="no-delivery-today clearfix">
+            <div class="day">Monday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_1'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_1'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Tuesday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_2'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_2'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Wednesday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_3'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_3'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Thursday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_4'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_4'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+            <div class="delivery-today clearfix">
+            <div class="day">Friday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_5'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_5'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Saturday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_6'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_6'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+            <div class="no-delivery-today clearfix">
+            <div class="day">Sunday</div>
+                            <div class="delivery-time time  delivery-time-pll">
+                    <div id='delivery_day_7'></div>
+                    11:30 - 15:30                </div>
+                            <div class="delivery-time time  delivery-time-plx">
+                    <div id='delivery_day_7'></div>
+                    19:00 - 22:30                </div>
+                    </div>
+                        </div>
+                            </div>
+
+            <p class="text-danger">
+                                    Please note: the restaurant may be open before and after the Foodpanda hours, Foodpanda is open all day.
+                            </p>
+
+                    </div>
+    </div>
+
+        
+        </div>
+
+                <div id="restaurant-menu" class="tab-pane clearfix active">
+    <div id="menu-categories">
+        <ul class="nav nav-list">
+            
+                            <li class="restaurant-menu">
+                    
+                    <ul class="category-menu category-menu-5318">
+                                                    <li class="restaurant-category">
+                                <a href="#category-83022">Shorba</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83030">Kebab: Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83031">Kebab: Non-Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83029">Snacks: Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83027">Rice: Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83028">Rice: Non-Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83032">Mains: Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83033">Mains: Non-Veg.</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83024">Breads</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83026">Salad/ Raita/ Papad</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83023">Drinks</a>
+                            </li>
+                                                    <li class="restaurant-category">
+                                <a href="#category-83025">Desserts</a>
+                            </li>
+                                            </ul>
+                </li>
+                    </ul>
+    </div>
+
+    <div id="menu-content">
+                                                        
+                
+<div class="h2" id="category-83022" class="menu-headline">Shorba</div>
+
+<div class="menu-category-items category-83022">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Tamatar aur Hara Dhania Ka Shorba            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83022"
+        data-product-id="771028"
+        data-product-title="Tamatar+aur+Hara+Dhania+Ka+Shorba"
+        data-pv-id="1038457"
+        data-pv-title=""
+        data-pv-price="130.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83022/1038457/771028/Tamatar-aur-Hara-Dhania-Ka-Shorba//130.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.130.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Murgh Ka Shorba            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83022"
+        data-product-id="771029"
+        data-product-title="Murgh+Ka+Shorba"
+        data-pv-id="1038458"
+        data-pv-title=""
+        data-pv-price="150.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83022/1038458/771029/Murgh-Ka-Shorba//150.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.150.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83030" class="menu-headline">Kebab: Veg.</div>
+
+<div class="menu-category-items category-83030">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Achari Paneer Tikka            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771080"
+        data-product-title="Achari+Paneer+Tikka"
+        data-pv-id="1038509"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038509/771080/Achari-Paneer-Tikka//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Paneer Tikka            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771081"
+        data-product-title="Paneer+Tikka"
+        data-pv-id="1038510"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038510/771081/Paneer-Tikka//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Tandoori Salad            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771082"
+        data-product-title="Tandoori+Salad"
+        data-pv-id="1038511"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038511/771082/Tandoori-Salad//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Bharwan Aloo            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771083"
+        data-product-title="Bharwan+Aloo"
+        data-pv-id="1038512"
+        data-pv-title=""
+        data-pv-price="250.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038512/771083/Bharwan-Aloo//250.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.250.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Corn Cheese Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771084"
+        data-product-title="Corn+Cheese+Kebab"
+        data-pv-id="1038513"
+        data-pv-title=""
+        data-pv-price="250.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038513/771084/Corn-Cheese-Kebab//250.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.250.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Cheese Chilli Seekh Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771085"
+        data-product-title="Cheese+Chilli+Seekh+Kebab"
+        data-pv-id="1038514"
+        data-pv-title=""
+        data-pv-price="250.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038514/771085/Cheese-Chilli-Seekh-Kebab//250.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.250.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Tandoori Bharwan Mushroom            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771086"
+        data-product-title="Tandoori+Bharwan+Mushroom"
+        data-pv-id="1038515"
+        data-pv-title=""
+        data-pv-price="250.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038515/771086/Tandoori-Bharwan-Mushroom//250.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.250.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dahi Ke Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771087"
+        data-product-title="Dahi+Ke+Kebab"
+        data-pv-id="1038516"
+        data-pv-title=""
+        data-pv-price="250.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038516/771087/Dahi-Ke-Kebab//250.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.250.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Hara Kebab               </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771088"
+        data-product-title="Hara+Kebab+++"
+        data-pv-id="1038517"
+        data-pv-title=""
+        data-pv-price="245.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038517/771088/Hara-Kebab---//245.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.245.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kebab Platter               </div>
+            <div class="product-description no-variation">
+                (Paneer tikka, tandoori bharwan aloo & hara kebab.)            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83030"
+        data-product-id="771089"
+        data-product-title="Kebab+Platter+++"
+        data-pv-id="1038518"
+        data-pv-title=""
+        data-pv-price="375.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83030/1038518/771089/Kebab-Platter---//375.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.375.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83031" class="menu-headline">Kebab: Non-Veg.</div>
+
+<div class="menu-category-items category-83031">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chicken Banno Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771090"
+        data-product-title="Chicken+Banno+Kebab"
+        data-pv-id="1038519"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038519/771090/Chicken-Banno-Kebab//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chicken Barra            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771091"
+        data-product-title="Chicken+Barra"
+        data-pv-id="1038520"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038520/771091/Chicken-Barra//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kastoori Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771092"
+        data-product-title="Kastoori+Kebab"
+        data-pv-id="1038521"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038521/771092/Kastoori-Kebab//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chicken Tikka            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771093"
+        data-product-title="Chicken+Tikka"
+        data-pv-id="1038522"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038522/771093/Chicken-Tikka//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Murgh Malai Tikka            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771094"
+        data-product-title="Murgh+Malai+Tikka"
+        data-pv-id="1038523"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038523/771094/Murgh-Malai-Tikka//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mutton Seekh Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771095"
+        data-product-title="Mutton+Seekh+Kebab"
+        data-pv-id="1038524"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038524/771095/Mutton-Seekh-Kebab//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kakori Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771096"
+        data-product-title="Kakori+Kebab"
+        data-pv-id="1038525"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038525/771096/Kakori-Kebab//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chicken Kalmi Kebab            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771097"
+        data-product-title="Chicken+Kalmi+Kebab"
+        data-pv-id="1038526"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038526/771097/Chicken-Kalmi-Kebab//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+            
+            <div class="product-title has-variation">
+                Tandoori Chicken             </div>
+            <div class="product-description has-variation">
+                            </div>
+
+                            <div class="menu-variation-wrapper">
+                                                                    <div class="menu-product clearfix">
+                            <div class="variation-title  " title="Full">
+                                Full                            </div>
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771098"
+        data-product-title="Tandoori+Chicken+"
+        data-pv-id="1038527"
+        data-pv-title="Full"
+        data-pv-price="385.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038527/771098/Tandoori-Chicken-/Full/385.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.385.00    </div>
+                        </div>
+                                                                    <div class="menu-product clearfix">
+                            <div class="variation-title  " title="Half">
+                                Half                            </div>
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771098"
+        data-product-title="Tandoori+Chicken+"
+        data-pv-id="1038528"
+        data-pv-title="Half"
+        data-pv-price="245.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038528/771098/Tandoori-Chicken-/Half/245.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.245.00    </div>
+                        </div>
+                                    </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kebab Platter            </div>
+            <div class="product-description no-variation">
+                (Chicken banno kebab, chicken barra & mutton seekh kebab.)            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83031"
+        data-product-id="771099"
+        data-product-title="Kebab+Platter"
+        data-pv-id="1038529"
+        data-pv-title=""
+        data-pv-price="475.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83031/1038529/771099/Kebab-Platter//475.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.475.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83029" class="menu-headline">Snacks: Veg.</div>
+
+<div class="menu-category-items category-83029">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dahi Puchka Kolkata Se            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83029"
+        data-product-id="771075"
+        data-product-title="Dahi+Puchka+Kolkata+Se"
+        data-pv-id="1038504"
+        data-pv-title=""
+        data-pv-price="95.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83029/1038504/771075/Dahi-Puchka-Kolkata-Se//95.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.95.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Papdi Chaat            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83029"
+        data-product-id="771076"
+        data-product-title="Papdi+Chaat"
+        data-pv-id="1038505"
+        data-pv-title=""
+        data-pv-price="95.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83029/1038505/771076/Papdi-Chaat//95.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.95.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Khaaja Ki Chaat            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83029"
+        data-product-id="771077"
+        data-product-title="Khaaja+Ki+Chaat"
+        data-pv-id="1038506"
+        data-pv-title=""
+        data-pv-price="90.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83029/1038506/771077/Khaaja-Ki-Chaat//90.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.90.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Palak Patta Chaat            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83029"
+        data-product-id="771078"
+        data-product-title="Palak+Patta+Chaat"
+        data-pv-id="1038507"
+        data-pv-title=""
+        data-pv-price="95.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83029/1038507/771078/Palak-Patta-Chaat//95.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.95.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chaat Platter            </div>
+            <div class="product-description no-variation">
+                (Palak patta chaat, dahi puchka, khaaja ki chaat & papdi chaat.)            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83029"
+        data-product-id="771079"
+        data-product-title="Chaat+Platter"
+        data-pv-id="1038508"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83029/1038508/771079/Chaat-Platter//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83027" class="menu-headline">Rice: Veg.</div>
+
+<div class="menu-category-items category-83027">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Steamed Rice            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83027"
+        data-product-id="771066"
+        data-product-title="Steamed+Rice"
+        data-pv-id="1038495"
+        data-pv-title=""
+        data-pv-price="140.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83027/1038495/771066/Steamed-Rice//140.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.140.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Jeera Rice            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83027"
+        data-product-id="771067"
+        data-product-title="Jeera+Rice"
+        data-pv-id="1038496"
+        data-pv-title=""
+        data-pv-price="170.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83027/1038496/771067/Jeera-Rice//170.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.170.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Peas Pulao            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83027"
+        data-product-id="771068"
+        data-product-title="Peas+Pulao"
+        data-pv-id="1038497"
+        data-pv-title=""
+        data-pv-price="170.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83027/1038497/771068/Peas-Pulao//170.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.170.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Masala Pulao            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83027"
+        data-product-id="771069"
+        data-product-title="Masala+Pulao"
+        data-pv-id="1038498"
+        data-pv-title=""
+        data-pv-price="210.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83027/1038498/771069/Masala-Pulao//210.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.210.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Veg. Biryani            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83027"
+        data-product-id="771070"
+        data-product-title="Veg.+Biryani"
+        data-pv-id="1038499"
+        data-pv-title=""
+        data-pv-price="250.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83027/1038499/771070/Veg%253A%253A-Biryani//250.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.250.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83028" class="menu-headline">Rice: Non-Veg.</div>
+
+<div class="menu-category-items category-83028">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chicken Biryani            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83028"
+        data-product-id="771071"
+        data-product-title="Chicken+Biryani"
+        data-pv-id="1038500"
+        data-pv-title=""
+        data-pv-price="295.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83028/1038500/771071/Chicken-Biryani//295.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.295.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Matka Chicken Biryani            </div>
+            <div class="product-description no-variation">
+                (Boneless)            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83028"
+        data-product-id="771072"
+        data-product-title="Matka+Chicken+Biryani"
+        data-pv-id="1038501"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83028/1038501/771072/Matka-Chicken-Biryani//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mutton Biryani            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83028"
+        data-product-id="771073"
+        data-product-title="Mutton+Biryani"
+        data-pv-id="1038502"
+        data-pv-title=""
+        data-pv-price="325.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83028/1038502/771073/Mutton-Biryani//325.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.325.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Matka Mutter Biryani            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83028"
+        data-product-id="771074"
+        data-product-title="Matka+Mutter+Biryani"
+        data-pv-id="1038503"
+        data-pv-title=""
+        data-pv-price="425.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83028/1038503/771074/Matka-Mutter-Biryani//425.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.425.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83032" class="menu-headline">Mains: Veg.</div>
+
+<div class="menu-category-items category-83032">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Paneer Makhni            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771100"
+        data-product-title="Paneer+Makhni"
+        data-pv-id="1038530"
+        data-pv-title=""
+        data-pv-price="290.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038530/771100/Paneer-Makhni//290.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.290.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kadhai Paneer            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771101"
+        data-product-title="Kadhai+Paneer"
+        data-pv-id="1038531"
+        data-pv-title=""
+        data-pv-price="290.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038531/771101/Kadhai-Paneer//290.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.290.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Khaaja Special Paneer            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771102"
+        data-product-title="Khaaja+Special+Paneer"
+        data-pv-id="1038532"
+        data-pv-title=""
+        data-pv-price="290.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038532/771102/Khaaja-Special-Paneer//290.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.290.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Palak Paneer            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771103"
+        data-product-title="Palak+Paneer"
+        data-pv-id="1038533"
+        data-pv-title=""
+        data-pv-price="290.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038533/771103/Palak-Paneer//290.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.290.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Paneer Butter Masala            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771104"
+        data-product-title="Paneer+Butter+Masala"
+        data-pv-id="1038534"
+        data-pv-title=""
+        data-pv-price="290.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038534/771104/Paneer-Butter-Masala//290.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.290.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Makhmali Kofta Curry            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771105"
+        data-product-title="Makhmali+Kofta+Curry"
+        data-pv-id="1038535"
+        data-pv-title=""
+        data-pv-price="290.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038535/771105/Makhmali-Kofta-Curry//290.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.290.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Gobi Mutter Masala            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771106"
+        data-product-title="Gobi+Mutter+Masala"
+        data-pv-id="1038536"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038536/771106/Gobi-Mutter-Masala//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Baingan Ka Bharta            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771107"
+        data-product-title="Baingan+Ka+Bharta"
+        data-pv-id="1038537"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038537/771107/Baingan-Ka-Bharta//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Bhindi Do Pyaza            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771108"
+        data-product-title="Bhindi+Do+Pyaza"
+        data-pv-id="1038538"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038538/771108/Bhindi-Do-Pyaza//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mutter Mushroom            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771109"
+        data-product-title="Mutter+Mushroom"
+        data-pv-id="1038539"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038539/771109/Mutter-Mushroom//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mixed Vegetables            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771110"
+        data-product-title="Mixed+Vegetables"
+        data-pv-id="1038540"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038540/771110/Mixed-Vegetables//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Subz Miloni            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771111"
+        data-product-title="Subz+Miloni"
+        data-pv-id="1038541"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038541/771111/Subz-Miloni//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Subzi Makhanwala            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771112"
+        data-product-title="Subzi+Makhanwala"
+        data-pv-id="1038542"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038542/771112/Subzi-Makhanwala//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Palak Khumb Makai            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771113"
+        data-product-title="Palak+Khumb+Makai"
+        data-pv-id="1038543"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038543/771113/Palak-Khumb-Makai//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dum Pudina Aloo            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771114"
+        data-product-title="Dum+Pudina+Aloo"
+        data-pv-id="1038544"
+        data-pv-title=""
+        data-pv-price="210.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038544/771114/Dum-Pudina-Aloo//210.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.210.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dal Makhni            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771115"
+        data-product-title="Dal+Makhni"
+        data-pv-id="1038545"
+        data-pv-title=""
+        data-pv-price="240.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038545/771115/Dal-Makhni//240.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.240.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Pindi Chana Masala            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771116"
+        data-product-title="Pindi+Chana+Masala"
+        data-pv-id="1038546"
+        data-pv-title=""
+        data-pv-price="220.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038546/771116/Pindi-Chana-Masala//220.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.220.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dal Tadkedar            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771117"
+        data-product-title="Dal+Tadkedar"
+        data-pv-id="1038547"
+        data-pv-title=""
+        data-pv-price="210.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038547/771117/Dal-Tadkedar//210.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.210.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kiwi Ki Dal            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83032"
+        data-product-id="771118"
+        data-product-title="Kiwi+Ki+Dal"
+        data-pv-id="1038548"
+        data-pv-title=""
+        data-pv-price="210.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83032/1038548/771118/Kiwi-Ki-Dal//210.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.210.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83033" class="menu-headline">Mains: Non-Veg.</div>
+
+<div class="menu-category-items category-83033">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Achari Chicken             </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771119"
+        data-product-title="Achari+Chicken+"
+        data-pv-id="1038549"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038549/771119/Achari-Chicken-//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Butter Chicken             </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771120"
+        data-product-title="Butter+Chicken+"
+        data-pv-id="1038550"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038550/771120/Butter-Chicken-//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Butter Chicken (Boneless)            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771121"
+        data-product-title="Butter+Chicken+%28Boneless%29"
+        data-pv-id="1038551"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038551/771121/Butter-Chicken-%2528Boneless%2529//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kadhai Chicken             </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771122"
+        data-product-title="Kadhai+Chicken+"
+        data-pv-id="1038552"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038552/771122/Kadhai-Chicken-//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kadhai Chicken (Boneless)            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771123"
+        data-product-title="Kadhai+Chicken+%28Boneless%29"
+        data-pv-id="1038553"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038553/771123/Kadhai-Chicken-%2528Boneless%2529//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chicken Changezi            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771124"
+        data-product-title="Chicken+Changezi"
+        data-pv-id="1038554"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038554/771124/Chicken-Changezi//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dum Ka Murgh            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771125"
+        data-product-title="Dum+Ka+Murgh"
+        data-pv-id="1038555"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038555/771125/Dum-Ka-Murgh//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Lagan Ka Murgh            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771126"
+        data-product-title="Lagan+Ka+Murgh"
+        data-pv-id="1038556"
+        data-pv-title=""
+        data-pv-price="360.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038556/771126/Lagan-Ka-Murgh//360.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.360.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Nalli Ka Salan            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771127"
+        data-product-title="Nalli+Ka+Salan"
+        data-pv-id="1038557"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038557/771127/Nalli-Ka-Salan//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Chaap Curry            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771129"
+        data-product-title="Chaap+Curry"
+        data-pv-id="1038559"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038559/771129/Chaap-Curry//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Rara Gosht            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771130"
+        data-product-title="Rara+Gosht"
+        data-pv-id="1038560"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038560/771130/Rara-Gosht//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mutton Rogan Josh            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771131"
+        data-product-title="Mutton+Rogan+Josh"
+        data-pv-id="1038561"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038561/771131/Mutton-Rogan-Josh//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Dum Ka Gosht            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83033"
+        data-product-id="771128"
+        data-product-title="Dum+Ka+Gosht"
+        data-pv-id="1038558"
+        data-pv-title=""
+        data-pv-price="395.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83033/1038558/771128/Dum-Ka-Gosht//395.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.395.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83024" class="menu-headline">Breads</div>
+
+<div class="menu-category-items category-83024">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Tandoori Roti            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771044"
+        data-product-title="Tandoori+Roti"
+        data-pv-id="1038473"
+        data-pv-title=""
+        data-pv-price="30.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038473/771044/Tandoori-Roti//30.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.30.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Fulka            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771045"
+        data-product-title="Fulka"
+        data-pv-id="1038474"
+        data-pv-title=""
+        data-pv-price="30.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038474/771045/Fulka//30.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.30.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Butter Roti            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771046"
+        data-product-title="Butter+Roti"
+        data-pv-id="1038475"
+        data-pv-title=""
+        data-pv-price="35.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038475/771046/Butter-Roti//35.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.35.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Plain Naan            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771047"
+        data-product-title="Plain+Naan"
+        data-pv-id="1038476"
+        data-pv-title=""
+        data-pv-price="45.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038476/771047/Plain-Naan//45.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.45.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Butter Naan            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771048"
+        data-product-title="Butter+Naan"
+        data-pv-id="1038477"
+        data-pv-title=""
+        data-pv-price="60.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038477/771048/Butter-Naan//60.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.60.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Lachha Parantha            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771049"
+        data-product-title="Lachha+Parantha"
+        data-pv-id="1038478"
+        data-pv-title=""
+        data-pv-price="60.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038478/771049/Lachha-Parantha//60.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.60.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Pudina Parantha            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771050"
+        data-product-title="Pudina+Parantha"
+        data-pv-id="1038479"
+        data-pv-title=""
+        data-pv-price="60.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038479/771050/Pudina-Parantha//60.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.60.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Roghni Naan            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771051"
+        data-product-title="Roghni+Naan"
+        data-pv-id="1038480"
+        data-pv-title=""
+        data-pv-price="70.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038480/771051/Roghni-Naan//70.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.70.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Garlic Naan            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771052"
+        data-product-title="Garlic+Naan"
+        data-pv-id="1038481"
+        data-pv-title=""
+        data-pv-price="75.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038481/771052/Garlic-Naan//75.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.75.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Kabuli Naan            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771053"
+        data-product-title="Kabuli+Naan"
+        data-pv-id="1038482"
+        data-pv-title=""
+        data-pv-price="75.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038482/771053/Kabuli-Naan//75.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.75.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Aloo Kulcha            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771054"
+        data-product-title="Aloo+Kulcha"
+        data-pv-id="1038483"
+        data-pv-title=""
+        data-pv-price="75.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038483/771054/Aloo-Kulcha//75.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.75.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Onion Kulcha            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771055"
+        data-product-title="Onion+Kulcha"
+        data-pv-id="1038484"
+        data-pv-title=""
+        data-pv-price="75.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038484/771055/Onion-Kulcha//75.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.75.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Paneer Kulcha            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83024"
+        data-product-id="771056"
+        data-product-title="Paneer+Kulcha"
+        data-pv-id="1038485"
+        data-pv-title=""
+        data-pv-price="85.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83024/1038485/771056/Paneer-Kulcha//85.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.85.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83026" class="menu-headline">Salad/ Raita/ Papad</div>
+
+<div class="menu-category-items category-83026">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Roasted Papad            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83026"
+        data-product-id="771061"
+        data-product-title="Roasted+Papad"
+        data-pv-id="1038490"
+        data-pv-title=""
+        data-pv-price="35.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83026/1038490/771061/Roasted-Papad//35.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.35.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Masala Papad            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83026"
+        data-product-id="771062"
+        data-product-title="Masala+Papad"
+        data-pv-id="1038491"
+        data-pv-title=""
+        data-pv-price="65.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83026/1038491/771062/Masala-Papad//65.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.65.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Green Salad            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83026"
+        data-product-id="771063"
+        data-product-title="Green+Salad"
+        data-pv-id="1038492"
+        data-pv-title=""
+        data-pv-price="95.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83026/1038492/771063/Green-Salad//95.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.95.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Pudina Veg. Raita            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83026"
+        data-product-id="771064"
+        data-product-title="Pudina+Veg.+Raita"
+        data-pv-id="1038493"
+        data-pv-title=""
+        data-pv-price="110.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83026/1038493/771064/Pudina-Veg%253A%253A-Raita//110.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.110.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Pineapple Raita            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83026"
+        data-product-id="771065"
+        data-product-title="Pineapple+Raita"
+        data-pv-id="1038494"
+        data-pv-title=""
+        data-pv-price="125.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83026/1038494/771065/Pineapple-Raita//125.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.125.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83023" class="menu-headline">Drinks</div>
+
+<div class="menu-category-items category-83023">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Masala Chaach            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771030"
+        data-product-title="Masala+Chaach"
+        data-pv-id="1038459"
+        data-pv-title=""
+        data-pv-price="70.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038459/771030/Masala-Chaach//70.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.70.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Sweet Lassi            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771031"
+        data-product-title="Sweet+Lassi"
+        data-pv-id="1038460"
+        data-pv-title=""
+        data-pv-price="80.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038460/771031/Sweet-Lassi//80.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.80.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Fresh Lime Soda            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771032"
+        data-product-title="Fresh+Lime+Soda"
+        data-pv-id="1038461"
+        data-pv-title=""
+        data-pv-price="90.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038461/771032/Fresh-Lime-Soda//90.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.90.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Pepsi            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771033"
+        data-product-title="Pepsi"
+        data-pv-id="1038462"
+        data-pv-title=""
+        data-pv-price="60.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038462/771033/Pepsi//60.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.60.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                7 Up            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771034"
+        data-product-title="7+Up"
+        data-pv-id="1038463"
+        data-pv-title=""
+        data-pv-price="60.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038463/771034/7-Up//60.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.60.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mirinda            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771035"
+        data-product-title="Mirinda"
+        data-pv-id="1038464"
+        data-pv-title=""
+        data-pv-price="60.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038464/771035/Mirinda//60.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.60.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Diet Pepsi            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771036"
+        data-product-title="Diet+Pepsi"
+        data-pv-id="1038465"
+        data-pv-title=""
+        data-pv-price="65.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038465/771036/Diet-Pepsi//65.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.65.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Mineral Water            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771037"
+        data-product-title="Mineral+Water"
+        data-pv-id="1038466"
+        data-pv-title=""
+        data-pv-price="40.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038466/771037/Mineral-Water//40.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.40.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Tonic Water            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771038"
+        data-product-title="Tonic+Water"
+        data-pv-id="1038467"
+        data-pv-title=""
+        data-pv-price="95.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038467/771038/Tonic-Water//95.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.95.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Masala Chai            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771039"
+        data-product-title="Masala+Chai"
+        data-pv-id="1038468"
+        data-pv-title=""
+        data-pv-price="50.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038468/771039/Masala-Chai//50.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.50.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Coffee            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771040"
+        data-product-title="Coffee"
+        data-pv-id="1038469"
+        data-pv-title=""
+        data-pv-price="65.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038469/771040/Coffee//65.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.65.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Orange Juice            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771041"
+        data-product-title="Orange+Juice"
+        data-pv-id="1038470"
+        data-pv-title=""
+        data-pv-price="110.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038470/771041/Orange-Juice//110.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.110.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Pineapple Juice            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771042"
+        data-product-title="Pineapple+Juice"
+        data-pv-id="1038471"
+        data-pv-title=""
+        data-pv-price="110.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038471/771042/Pineapple-Juice//110.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.110.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Guava Juice             </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83023"
+        data-product-id="771043"
+        data-product-title="Guava+Juice+"
+        data-pv-id="1038472"
+        data-pv-title=""
+        data-pv-price="110.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83023/1038472/771043/Guava-Juice-//110.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.110.00    </div>
+                </div>
+                        </div>
+</div>
+
+<div class="h2" id="category-83025" class="menu-headline">Desserts</div>
+
+<div class="menu-category-items category-83025">
+    
+    
+    <div class="menu-vertical clearfix">
+                    
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Rocket Kulfi            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83025"
+        data-product-id="771057"
+        data-product-title="Rocket+Kulfi"
+        data-pv-id="1038486"
+        data-pv-title=""
+        data-pv-price="70.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83025/1038486/771057/Rocket-Kulfi//70.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.70.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Gulab Jamun            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83025"
+        data-product-id="771058"
+        data-product-title="Gulab+Jamun"
+        data-pv-id="1038487"
+        data-pv-title=""
+        data-pv-price="90.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83025/1038487/771058/Gulab-Jamun//90.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.90.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Rasgulla            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83025"
+        data-product-id="771059"
+        data-product-title="Rasgulla"
+        data-pv-id="1038488"
+        data-pv-title=""
+        data-pv-price="90.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83025/1038488/771059/Rasgulla//90.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.90.00    </div>
+                </div>
+                                
+                            <div class="menu-product clearfix no-variation">
+            
+            <div class="product-title no-variation">
+                Rabri Khaaja            </div>
+            <div class="product-description no-variation">
+                            </div>
+
+                            <button type="button" class="btn btn-add-to-cart btn-primary"
+        data-vendor-code="n4be"
+        data-id-vendor="5552"
+        data-action=""
+        data-id-menu="5318"
+        data-id-menu-category="83025"
+        data-product-id="771060"
+        data-product-title="Rabri+Khaaja"
+        data-pv-id="1038489"
+        data-pv-title=""
+        data-pv-price="120.00"
+        data-pv-container-price="0.00"
+        data-pv-remote-code=""
+        data-pv-template="0"
+        data-pv-href="/menu/choicesandtoppings/n4be/5318/83025/1038489/771060/Rabri-Khaaja//120.00/0.00//0">
+    <span class="btn-plus  img"></span>
+</button>
+
+    <div class="price">
+        Rs.120.00    </div>
+                </div>
+                        </div>
+</div>
+                        </div>
+</div>
+
+                    <div id="restaurant-reviews" class="tab-pane clearfix ">
+        <div id="add-review" class="clearfix">
+                            <button type="button" class="btn btn-default" data-loading-text="Loading...">
+                    Log in to rate this restaurant                    <span class="btn-arrow img"></span>
+                </button>
+                    </div>
+        <div class="alert" style="display: none"></div>
+
+            </div>
+            </div>
+        </div>
+
+            </div>
+
+    <div class="col-sm-12 col-md-3">
+        <div id="cart">
+            <div id="cart-fixed-wrapper">
+                    <div class="cart-content-wrapper">
+        <div class="cart-content-header">
+            YOUR ORDER                    </div>
+
+        <div class="cart-content-teaser clearfix">
+            <div class="cart-vendor-title">Khaaja Chowk</div>
+                        <div class="cart-vendor-image">
+                <img src="http://dynamic.foodpanda.in/images/vendors/n4be_th.gif" alt="Khaaja Chowk" title="Khaaja Chowk">
+            </div>
+        </div>
+
+        
+        <div class="cart-content-body">
+            <div class="cart-content-separator"></div>
+            <div class="cart-content-orders-container">
+            <table class="cart-content-orders">
+                                    <tr class="cart-line-noOrder">
+                        <td>
+                            <i class="icon-arrow-grey img"></i>
+                        </td>
+                        <td>
+                            <span class="cart-line-noOrder-info">Order delicious food from the menu!</span>
+                        </td>
+                    </tr>
+                            </table>
+            </div>
+                            <a                     id="preorder-button"
+                    class="btn btn-default btn-block btn-lg disabled"
+                    title="Please add at least one item to proceed"
+                    data-action=""
+                    data-loading-text="Loading..."
+                    data-minimum-delivery-value="500.00"
+                    data-minimum-delivery-value-diff="0"
+                    data-vendor-code="n4be">
+                    Proceed to checkout                </a>
+                    </div>
+    </div>
+    <div class="cart-content-footer text-center">
+        <span class="cart-footer-info-icon"></span>
+        <span class="cart-footer-info-text">
+            Delivery in: 50min        </span>
+    </div>
+
+    <span id="cart-total-items-count" class="hide">0</span>
+            </div>
+            <div id="cart-pullout-btn">
+                <span class="total" style="display:none;">0</span>
+                <span class="icon icon-map"></span>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+        <div class="sticky-footer-pseudo-element"></div>
+    </div>
+
+    
+<div id="footer-wrapper" class="sticky-footer">
+        <div id="newsletter-wrapper" >
+        <div id="newsletter" class="container">
+            <div id="newsletter-form" class="control-group col-md-6">
+                <div class="h4">Subscribe to our newsletter:</div>
+                <div class="row">
+                    <input id="newsletter-type" type="hidden" value="1">
+
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="form-group">
+                            <input id="newsletter-email"
+                                   value=""
+                                   type="email"
+                                   class="form-control"
+                                   name="email"
+                                   autocomplete="off"
+                                   placeholder="Enter your e-mail" />
+                            <span id="email-error" class="help-inline hide">
+                                E-mail not in the correct format                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <a id="newsletter-submit" class="btn btn-primary btn-large btn-block" href="#">
+                                Sign up now                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="newletter-benefits-container" class="col-md-6">
+                <div id="newletter-benefits">
+                    <p><i class="icon-green-check"></i>Don&apos;t miss out on our great offers</p>
+                    <p><i class="icon-green-check"></i>Receive deals from all our top restaurants via e-mail</p>
+                </div>
+            </div>
+            <div id="newletter-success" class="col-md-6 hide">
+                <div class="alert-icon icon-success-check"></div>
+                <div id="newletter-success-content">
+                    <div class="h4">Thank you for your registration.</div>
+                    <p>From now on you will receive updates about exclusive offers in your city.</p>
+                </div>
+            </div>
+                        <hr class="line">
+        </div>
+    </div>
+<footer>
+    <div id="footer" class="container">
+                    <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="h4">Popular cities</div>
+                    <ul class="unstyled">
+	<li>
+		<a href="/restaurants/index/city/delhi">Delhi</a></li>
+	<li>
+		<a href="/restaurants/index/city/gurgaon">Gurgaon</a></li>
+	<li>
+		<a href="/restaurants/index/city/mumbai">Mumbai</a></li>
+	<li>
+		<a href="/restaurants/index/city/panchkula-chandigarh-mohali">Panchkula/Chandigarh/Mohali</a></li>
+	<li>
+		<a href="/restaurants/index/city/pune">Pune</a></li>
+	<li>
+		<a href="/restaurants/index/city/bangalore">Bangalore</a></li>
+	<li>
+		<a href="/restaurants/index/city/ahmedabad-gandhinagar">Ahmedabad/Gandhinagar</a></li>
+	<li>
+		<a href="/restaurants/index/city/noida">Noida</a></li>
+	<li>
+		<a href="/restaurants/index/city/greater-noida">Greater Noida</a></li>
+	<li>
+		<a href="/restaurants/index/city/indirapuram-ghaziabad">Indirapuram Ghaziabad</a></li>
+	<li>
+		<a href="/restaurants/index/city/Faridabad">Faridabad</a></li>
+	<li>
+		<a href="/restaurants/index/city/hyderabad">Hyderabad</a></li>
+	<li>
+		<a href="/restaurants/index/city/kolkata">Kolkata</a></li>
+	<li>
+		<a href="/restaurants/index/city/jaipur">Jaipur</a></li>
+	<li>
+		<a href="/restaurants/index/city/chennai">Chennai</a></li>
+</ul>                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="h4">Popular cuisines</div>
+                    <ul class="unstyled">
+	<li>
+		<a href="/restaurants/index/cuisines/fast-food-cuisine">Fast Food</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/pizza">Pizza</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/biryani-cuisine">Biryani</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/japanese">Japanese</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/punjabi-cuisine">Punjabi</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/bengali">Bengali</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/pasta-cuisine">Pasta</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/south-indian">South Indian</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/chinese">Chinese</a></li>
+	<li>
+		<a href="/restaurants/index/cuisines/french">French</a></li>
+        <li>
+		<a href="/restaurants/index/cuisines/continental-cuisine">Continental</a></li>
+        <li>
+		<a href="/restaurants/index/cuisines/gujrati">Gujarati</a></li>
+        <li>
+		<a href="/restaurants/index/cuisines/salads">Salads</a></li>
+</ul>                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="h4">Popular restaurants</div>
+                    <ul class="unstyled">
+	<li>
+		<a href="http://pizzahut.foodpanda.in">Pizza Hut</a></li>
+        <li>
+                <a href="http://subway.foodpanda.in">Subway</a></li>
+        <li>
+                <a href="http://mastkalandar.foodpanda.in">Mast Kalandar</a></li>
+        <li>
+                <a href="http://baskin-robbins.foodpanda.in">Baskin Robbins</a></li>
+        <li>
+                <a href="http://yo-china.foodpanda.in/">Yo China</a></li>
+        <li>
+                <a href="http://pind-balluchi.foodpanda.in">Pind Balluchi</a></li>
+	<li>
+		<a href="/restaurant/n5fa">Dana Choga</a></li>
+	<li>
+		<a href="/restaurant/n7ql">Mamagoto</a></li>
+	<li>
+		<a href="/restaurant/n4fi">Chin Chin</a></li>
+	<li>
+		<a href="/restaurant/n7hm">Arabesque</a></li>
+	<li>
+		<a href="/restaurant/n3fs">Dilli-6</a></li>
+	<li>
+		<a href="/restaurant/n3yo">Southern Spice Whitefield</a></li>
+	<li>
+		<a href="/restaurant/n0ff">Asian Haus</a></li>
+	<li>
+		<a href="/restaurant/n4jq">Monginis Mumbai</a></li>
+	<li>
+		<a href="http://bikanervala.foodpanda.in/">Bikanervala</a></li>
+	<li>
+		<a href="/restaurant/n4jo">Viva Hyderabad</a></li>
+	<li>
+		<a href="/restaurant/n4hm">Biryani Blues</a></li>
+</ul>                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="h4">Get in touch</div>
+                    <div id="social-network-links">
+                                                                                                                                                    <span>
+                                                                                    <a href="https://www.facebook.com/foodpanda.in" target="_blank"><img alt="Facebook" src="http://assets.foodpanda.in/images/static/icons/facebook.png"></a>
+                                                                                                                            <a href="https://www.facebook.com/foodpanda.in" target="_blank">Facebook</a>
+                                                                            </span>
+                                                                    <span>
+                                                                                    <a href="https://twitter.com/FoodpandaIndia" target="_blank"><img alt="Twitter" src="http://assets.foodpanda.in/images/static/icons/twitter.png"></a>
+                                                                                                                            <a href="https://twitter.com/FoodpandaIndia" target="_blank">Twitter</a>
+                                                                            </span>
+                                                                    <span>
+                                                                                    <a href="http://blog.foodpanda.in/" target="_blank"><img alt="Blog" src="http://assets.foodpanda.in/images/static/icons/blog.png"></a>
+                                                                                                                            <a href="http://blog.foodpanda.in/" target="_blank">Blog</a>
+                                                                            </span>
+                                                                                                        </div>
+                    <div class="h4" id="static-pages-headline">Foodpanda</div>
+                    <div id="link-collection">
+                                                                                <ul class="list-unstyled">
+                                                                    <li><a href="/contents/about.htm">About us</a></li>
+                                                                    <li><a href="/contents/press.htm">foodpanda.in press</a></li>
+                                                                    <li><a href="/contents/contact.htm">Contact</a></li>
+                                                                    <li><a href="/contents/terms-and-conditions.htm">Terms and Conditions</a></li>
+                                                                    <li><a href="/contents/privacy.htm">Privacy Policy</a></li>
+                                                                    <li><a href="/contents/apps">foodpanda India Android and iPhone Apps</a></li>
+                                                                    <li><a href="/contents/careers.htm">Careers</a></li>
+                                                            </ul>
+                                            </div>
+                </div>
+            </div>
+            
+            </div>
+</footer>
+</div>
+
+            <div id="auth-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="auth-modal-content">
+                            <div id="login-modal-body"></div>
+                            <div id="registration-modal-body"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="forgot-password-modal" class="modal fade" tabindex="-1" role="dialog"></div>
+        <div id="sms-confirmation-modal" class="modal fade" tabindex="-1" role="dialog"></div>
+    <div id="area-selection-modal"
+         class="modal fade "
+         tabindex="-1"
+         role="dialog">
+    </div>
+    <div id="cart-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>var config = {"Helper":{"controller":"menu","action":"index","isLoggedIn":0,"hasLocation":true,"locationGroupType":"AREAS","showPopupOnRestaurantMenuPage":"0","isOpen":true,"isMobile":false},"Auth":{"isLoggedIn":false},"SiteOverride":{"enabled":false,"isSiteOverrideOnlyForIframe":false,"isIframed":false,"isIframeAssumed":false,"cookieName":"site_framed"},"Cart":{"vendorCode":"n4be","isPreorderAvailable":true,"isRestaurantClosed":false},"Menu":{"areaSelected":true,"restaurantClosed":false,"storeOpen":true,"preview":null,"vendorCode":"n4be"},"AreaSelection":{"lat":null,"lng":null,"street":null,"cityId":11,"locationGroupType":"AREAS","locationType":"AREA","locationCountry":"IN","locationGroupDefault":"AREAS","separatedStreetNumber":false,"separatedStreetNumberRequired":false,"gmapLanguage":"en"}};</script>
+    <script type="text/javascript" src="//static.criteo.net/criteo_ld3.js"></script>
+
+<script type="text/javascript">
+document.write('<div id=\"cto_ctg_7727143_ac\" style=\"display:none\">');
+document.write('  <div class=\"ctoWidgetServer\">'+document.location.protocol+'\/\/'+((document.location.protocol=='http:')?'foodpandain.widget':'sslwidget')+'.criteo.com\/pdf\/<\/div>');
+document.write('  <div class=\"ctoDataType\">catalog<\/div>');
+document.write('  <div class=\"ctoParams\">wi=7727143&i=n4be<\/div>');
+document.write('  <div class=\"ctoData\">');
+document.write('    <div id=\"ctoName\">Khaaja Chowk<\/div>');
+document.write('    <div id=\"ctoProductUrl\">http://www.foodpanda.in/restaurant/n4be/khaaja-chowk-indranagar<\/div>');
+document.write('    <div id=\"ctoBigImage\">http://dynamic.foodpanda.in/images/vendors/n4be_th.gif<\/div>');
+document.write('    <div id=\"ctoDescription\">Biryani,North Indian<\/div>');
+document.write('    <div id=\"ctoRecommendable\"><\/div>');
+document.write('    <div id=\"ctoCategoryId1\">100 Feet Road (Indiranagar)<\/div>');
+document.write('    <div id=\"ctoExtra_cityname\">Bangalore<\/div>');
+document.write('  <\/div>');
+document.write('<\/div>');
+document.write('<div id=\"cto_se_7727137_ac\" style=\"display:none\">');
+document.write('<div class=\"ctoWidgetServer\">'+document.location.protocol+'\/\/'+((document.location.protocol=='http:')?'foodpandain.widget':'sslwidget')+'.criteo.com\/pdf\/<\/div>');
+document.write('<div class=\"ctoDataType\">sendEvent<\/div>');
+document.write('<div class=\"ctoParams\">wi=7727137&pt1=2&i=n4be&vurl=http://www.foodpanda.in/restaurant/n4be/khaaja-chowk-indranagar<\/div>');
+document.write('<\/div>');
+</script>
+<script type="text/javascript" charset="UTF-8">
+var _AvazuRunid = "MTExNmllcl9mZys0";
+var _AvazuRadvid = "Mjg0OG1lX3QrNGlr";
+var _AvazuArticle = new Object();
+var _AvazuCategory = new Object();
+_AvazuCategory.img = "[CATEGORY_IMG]";
+_AvazuCategory.name = "100 Feet Road (Indiranagar)";
+_AvazuArticle.id = "n4be";
+_AvazuArticle.name = "Khaaja Chowk,Biryani,North Indian";
+_AvazuArticle.img = "http://dynamic.foodpanda.in/images/vendors/n4be_th.gif";
+_AvazuArticle.deepLink = "http://www.foodpanda.in/restaurant/n4be";
+_AvazuArticle.price = "1";
+_AvazuArticle.currency = "Rs";
+_AvazuArticle.description = "Bangalore,100 Feet Road (Indiranagar)";
+_AvazuArticle.big_img = "[ARTICLE_BIG_IMG]";
+_AvazuArticle.recommendable = "[ARTICLE_RECOMMENDABLE]";
+_AvazuArticle.instock = "[ARTICLE_INSTOCK]";
+_AvazuCategory.name2 = "[CATEGORY_NAME2]";
+_AvazuCategory.name3 = "[CATEGORY_NAME3]";
+_AvazuArticle.discount = "[ARTICLE_DISCOUNT]";
+_AvazuArticle.list_price = "[ARTICLE_LIST_PRICE]";
+_AvazuArticle.other = "[CUSTOM_PARAMETERS]";
+(function() {
+var avazu = document.createElement('script'); avazu.type = 'text/javascript'; avazu.async = true;
+avazu.src = "https://avazudsp.net/ret/dspPros.js";
+var avazujs = document.getElementsByTagName('script')[0]; avazujs.parentNode.insertBefore(avazu, avazujs);
+})();
+</script>
+<div style="display: none;" id="google_conversion">
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 1003568961;	
+	var google_conversion_label = "UqImCKeAiAQQwf7E3gM";	
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;	
+	/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1003568961/?value=0&amp;label=UqImCKeAiAQQwf7E3gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+</div>
+<!-- Google Code for Remarketing tag -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 996528864;
+var google_conversion_label = "B3MwCODQ2AQQ4KWX2wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/996528864/?value=0&amp;label=B3MwCODQ2AQQ4KWX2wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- Google Code for Order Conversion Page --> 
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 995332802;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "Dpq3CN6opQgQwqXO2gM"; var google_conversion_value = 0; var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript"  
+src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt=""  
+src="//www.googleadservices.com/pagead/conversion/995332802/?value=0&amp;label=Dpq3CN6opQgQwqXO2gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+adroll_adv_id = "ID5FBEPKT5EXDOQESLMVSM";
+adroll_pix_id = "EAFRHZC3MBF7THWZXYV2DJ";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+<!-- MouseflowExcludeStart -->
+<!-- Start BounceX tag. Deploy at the beginning of document head. -->
+<script>
+(function(d) {
+	var e = d.createElement('script');
+	e.src = d.location.protocol + '//bounceexchange.com/bounce/i.js?client_id=701';
+	e.async = true;
+	d.getElementsByTagName("head")[0].appendChild(e);
+ }(document));
+</script>
+<!-- End BounceX tag -->
+<!-- MouseflowExcludeEnd -->
+<script type="text/javascript" charset="UTF-8">
+var _AvazuRunid = "MTExNmllcl9mZys0";
+var _AvazuRadvid = "Mjg0OG1lX3QrNGlr";
+var _AvazuArticle = new Object();
+_AvazuArticle.other = "[CUSTOM_PARAMETERS]";
+(function() {
+var avazu = document.createElement('script'); avazu.type = 'text/javascript'; avazu.async = true;
+avazu.src = "https://avazudsp.net/ret/dspPros.js";
+var avazujs = document.getElementsByTagName('script')[0]; avazujs.parentNode.insertBefore(avazu, avazujs);
+})();
+</script>
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0020/2576.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- Google Code for Remarketing tag -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 993310753;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/993310753/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 996091439;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/996091439/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script>(function(){
+  window._fbds = window._fbds || {};
+  _fbds.pixelId = 601925026550888;
+  var fbds = document.createElement('script');
+  fbds.async = true;
+  fbds.src = '//connect.facebook.net/en_US/fbds.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(fbds, s);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(["track", "PixelInitialized", {}]);
+</script>
+<noscript><img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=601925026550888&amp;ev=NoScript" /></noscript>
+<!-- Yahoo_RETARGETING_PIXEL -->
+<img src="http://ad.yieldmanager.com/pixel?id=1969525&t=2" width="1" height="1" />
+<!-- End of segment tag -->
+    <script type="text/javascript">
+        var __lc = {
+            license: 2018601,
+            visitor: {
+                name: 'Guest'
+            },
+            params: [
+                {
+                    name: 'Email',
+                    value: ''
+                }
+            ]
+        };
+        lazyLoadFunctions.push(function() {
+            $(document).ready(function() {
+                var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+                lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+            });
+        });
+    </script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-3.newrelic.com","licenseKey":"f77b1abc66","applicationID":"907321","transactionName":"bldXNUJYXhAABxBZDVcddAJEUF8NTikBXhd6XVsVQlZcDwQWS1kMXVdN","queueTime":0,"applicationTime":105,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"jserror.newrelic.com","agent":"js-agent.newrelic.com\/nr-411.min.js"}</script></body>
+</html>
+
